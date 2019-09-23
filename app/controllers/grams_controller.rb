@@ -2,6 +2,7 @@ class GramsController < ApplicationController
  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+  	@grams = Gram.all
   end
 
   def new
@@ -20,6 +21,7 @@ class GramsController < ApplicationController
 
   def show
     @gram = Gram.find_by_id(params[:id])
+    @image = Image.new
     return render_not_found if @gram.blank?
   end
 
